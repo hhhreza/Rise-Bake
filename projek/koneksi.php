@@ -2,9 +2,9 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "catlover_db";
+$database = "bakery.sql";
 
-$koneksi = mysqli_connect ($host, $username, $password, $database);
+$koneksi = mysqli_connect($host, $username, $password, $database);
 
 if (!$koneksi) {
     die ("Koneksi gagal: " . mysqli_connect_error());
