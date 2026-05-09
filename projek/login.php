@@ -1,9 +1,45 @@
+<?php
+session_start();
+include 'koneksi.php';
+
+if (isset($_POST['login'])) {
+    $email = mysqli_real_escape_string($koneksi, $_POST['email']);
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+
+    // Cari user berdasarkan email
+    $query = "SELECT * FROM users WHERE email='$email'";
+    $result = mysqli_query($koneksi, $query);
+
+    if (mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+
+        // Verifikasi password yang di-hash
+        if ($user['password'] == $password) {
+            $_SESSION['login'] = true;
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = $user['role'];
+            if ($user['role'] == 'admin') {
+            header("Location: dashboard.php");
+            } else {
+            header("Location: index.php"); 
+            }
+            exit();
+        } else {
+            echo "<script>alert('Password salah.');</script>";
+        }
+    } else {
+        echo "<script>alert('Email tidak ditemukan.');</script>";
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="stylebake.css">
 </head>
@@ -38,21 +74,22 @@
         </nav>
 
         <div class=" container card col-md-4 mt-5 shadow p-3 mb-5 bg-body rounded">
-            <form action="" class="text-center login"> 🥐 Login</form>
+            <form action="" method="POST" class="text-center login"> 🥐 Login
 
             <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
             </div>
 
             <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
 
             <button type="submit" class="btn btn-primary" name="login">Login</button>
 
             <p class="card-text text-center mt-3">Belum memiliki akun? <a href="register.php">Daftar di sini</a></p>
+          </form>
         </div>
     </main>
     <footer class="footer">
