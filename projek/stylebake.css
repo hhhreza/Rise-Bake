@@ -1,0 +1,139 @@
+@font-face {
+    font-family: Anerome;
+    src: url(Font/AneromeStamped-EaLRj.otf);
+}
+@font-face {
+    font-family: Poppins;
+    src: url(Font/Poppins-Regular.ttf);
+}
+@font-face {
+    font-family: Poppins Italic;
+    src: url(Font/Poppins-Italic.ttf);
+}
+@font-face {
+    font-family: Poppins Bold;
+    src: url(Font/Poppins-Bold.ttf);
+}
+.content {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+.navbar-brand {
+    font-family: Anerome;
+    font-size: 32px;
+    color: rgb(212, 152, 69);
+}
+.navbar {
+    font-size: 18px;
+}
+.nav-link {
+    font-family: Poppins;
+}
+.content-1 {
+    width: 100%;
+    height: 70vh;
+    background-color: rgb(199, 158, 76);
+    color: rgb(212, 152, 69);
+    text-align: center;
+    background-image: url(Gambar/Bakery-Home2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0% 85%;
+}
+.wrap-headline {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+}
+.headline {
+    padding-top: 80px;
+    font-family: Anerome;
+    font-size: 100px;
+    margin: 0;
+}
+.sub-headline {
+    margin-bottom: 100px;
+    text-align: center;
+    font-family: Poppins Italic;
+}
+.content-2 {
+    margin-top: 0;
+    width: auto;
+    height: fit-content;
+    background: linear-gradient(135deg, #d39543, #a1743a);
+    display: flex;
+    flex-direction: column;
+}
+.wrap-advantage-image {
+    display: flex;
+}
+.wrap-advantage {
+    display: flex;
+    flex-direction: column;
+    gap: 72px;
+    padding-top: 48px;
+    padding-left: 48px;
+}
+.advantage-call {
+    font-family: Poppins Bold;
+    color: rgb(253, 252, 250);
+    text-align: left;
+}
+.advantage-list {
+    display: flex;
+    gap: 8px;
+}
+.adv-items {
+    color: #a1743a;
+    background-color: white;
+    height: 160px;
+    border-radius: 8px;
+    width: 240px;
+    padding: 16px;
+}
+.gambar {
+    margin-left: auto;
+    margin-right: 48px;
+}
+.img-bagel {
+    width: auto;
+    height: 55vh;
+}
+.wrap-cta-image {
+    display: flex;
+    margin-bottom: 32px;
+}
+.gambar-2 {
+    padding-left: 48px;
+    display: flex;
+    gap: 32px;
+}
+.img-pastry {
+    width: auto;
+    height: 15vh;
+}
+.wrap-cta {
+    margin-left: auto;
+    margin-right: 48px;
+    text-align: right;
+}
+.cta {
+    color: white;
+    font-family: Poppins Bold;
+}
+.btn-explore {
+    margin-bottom: 16px;
+    font-family: Poppins;
+}
+.wrap-footer {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.copyright, .address {
+    margin: 0;
+}
