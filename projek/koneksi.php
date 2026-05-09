@@ -2,7 +2,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$database = "bakery.sql";
+$database = "bakery";
 
 $koneksi = mysqli_connect($host, $username, $password, $database);
 
