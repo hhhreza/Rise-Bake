@@ -5,7 +5,6 @@ include 'koneksi.php';
 if (isset($_POST['login'])) {
     $email = mysqli_real_escape_string($koneksi, $_POST['email']);
     $password = $_POST['password'];
-    $role = $_POST['role'];
 
     // Cari user berdasarkan email
     $query = "SELECT * FROM users WHERE email='$email'";
