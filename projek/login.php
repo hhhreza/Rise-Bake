@@ -43,13 +43,12 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" href="stylebake.css">
 </head>
 <body>
-    <main>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-4" href="index.php">🥐 Rise & Bake</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-4" href="index.php">🥐 Rise & Bake</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+            </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto me-4 gap-1">
                         <li class="nav-item">
@@ -62,20 +61,24 @@ if (isset($_POST['login'])) {
                             <a class="nav-link active" aria-current="page" href="login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="register.php">Register</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="about_us.php">About Us</a>
                         </li>
+                        <div class="logout-button ms-auto">
+                            <a href="logout.php">
+                                <button type="button" class="btn btn-dark logout">Logout</button>
+                            </a>
+                        </div>
                     </ul>
                 </div>
-            </div>
-        </nav>
-
+        </div>
+    </nav>
+        
+        <main style="background-color: transparent !important;">
         <div class=" container card col-md-4 mt-5 shadow p-3 mb-5 bg-body rounded">
-            <form action="" method="POST" class="text-center login"> 🥐 Login
+            <form action="" method="POST" class="login"> 
+                <h3 class="card-title mb-4 text-center">🥐 Login</h3>
 
-            <div class="mb-3">
+            <div class="mb-3 text-left">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
             </div>
@@ -85,7 +88,7 @@ if (isset($_POST['login'])) {
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
             </div>
 
-            <button type="submit" class="btn btn-primary" name="login">Login</button>
+            <button type="submit" class="btn w-100" name="login">Login</button>
 
             <p class="card-text text-center mt-3">Belum memiliki akun? <a href="register.php">Daftar di sini</a></p>
           </form>
