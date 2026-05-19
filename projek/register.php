@@ -10,7 +10,8 @@ if (isset($_POST['register'])) {
     $result = mysqli_query($koneksi, $query);
 
     if (mysqli_num_rows($result) > 0) {
-        echo "<script>alert('Email sudah terdaftar.');</script>";
+        $_SESSION['registError'] = "[ERROR] Email sudah terdaftar!";
+        exit();
     } else {
         $query = "INSERT INTO users (email, password) VALUES ('$email', '$password')";
         if (mysqli_query($koneksi, $query)) {
@@ -18,7 +19,9 @@ if (isset($_POST['register'])) {
                   window.location='login.php';</script>";
             exit();
         } else {
-            echo "<script>alert('Registrasi gagal.');</script>";
+            $_SESSION['registError'] = "[ERROR] Registrasi gagal!";
+            header('Location: login.php');
+            exit();
         }
     }
 }
@@ -41,35 +44,21 @@ if (isset($_POST['register'])) {
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto me-4 gap-1">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="produk.php">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="login.php">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="about_us.php">About Us</a>
-                        </li>
-                        <div class="logout-button ms-auto">
-                            <a href="logout.php">
-                                <button type="button" class="btn btn-dark logout">Logout</button>
-                            </a>
-                        </div>
-                    </ul>
-                </div>
             </div>
         </nav>
 
-<main> 
+<main class="content-log-reg"> 
     <div class=" container card col-md-4 mt-5 shadow p-3 mb-5 bg-body rounded">
         <form action="" method="POST" class="register"> 
             <h3 class="card-title mb-4 text-center">🥐 Register</h3>
-                    
+            <?php
+                if (isset($_SESSION['registError'])) { ?>
+                <div class="alert alert-danger text-center" role="alert" style="font-size: 0.8rem;">
+                    <?php echo $_SESSION['registError'];
+                    unset($_SESSION['registError']); ?>
+                </div>
+            <?php
+            } ?> 
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email">
