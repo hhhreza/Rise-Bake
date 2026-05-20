@@ -58,23 +58,26 @@ $result = mysqli_query($koneksi, $query);
         <div class="wrapper-produk container">
             <div class="parent-card row gy-4">
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                    
-                
                 <div class="col-md-4">
                     <div class="card h-100">
-                        <img src="<?php echo $row['gambar']; ?>" class="card-img-top" alt="Croissant">
-                        <div class="card-body">
+                        <img src="Gambar/<?php echo $row['gambar']; ?>" class="card-img-top" alt="<?php echo $row['nama_produk']; ?>">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title"><?php echo $row['nama_produk']; ?></h5>
-                            <p class="card-text"><?php echo $row['deskripsi']; ?></p>
-                            <p class="card-text"><small class="text-body-secondary">Price: <?php echo $row['harga']; ?></small></p>
-                            <a href="form_beli.php?kode_bakery=<?php echo $row['kode_bakery']; ?>" class="btn btn-success">Beli</a>
+                            <p class="card-text card-deskripsi mb-auto"><?php echo $row['deskripsi']; ?></p>
+                            <p class="card-price mt-auto"><small class="text-body-secondary">Price: <?php echo $row['harga']; ?></small></p>
+                            <a href="form_beli.php?kode_bakery=<?php echo $row['kode_bakery']; ?>" class="btn btn-secondary">Beli</a>
                         </div>
                     </div>
                 </div>
-                <?php }
-                ?>
+                <?php } ?>
             </div>
         </div>
     </main>
+    <footer class="footer">
+        <div class="wrap-footer">
+            <p class="copyright">&copy; 2026 Rise & Bake. All rights reserved.</p>
+            <p class="address">📍 Babarsari josjis | 📧 hello@rizebakery.com</p>
+        </div>
+    </footer>
 </body>
 </html>
