@@ -2,10 +2,10 @@
 session_start();
 
 // Kalau belum login atau bukan admin, tendang keluar
-/* if (!isset($_SESSION['login']) || $_SESSION['role'] != 'admin') {
+if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
     header("Location: index.php");
     exit();
-} */
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
