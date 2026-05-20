@@ -2,10 +2,10 @@
 session_start();
 include 'koneksi.php';
 // Kalau belum login atau bukan admin, tendang keluar
-/* if (!isset($_SESSION['login']) || $_SESSION['role'] != 'admin') {
+if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
     header("Location: index.php");
     exit();
-} */
+}
 
 $query = "SELECT * FROM list_produk";
 $result = mysqli_query($koneksi, $query);
@@ -28,7 +28,7 @@ $result = mysqli_query($koneksi, $query);
                     <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto me-4 gap-1">
+                <ul class="navbar-nav ms-auto justiify-content-center me-4 gap-1">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="dashboardAdmin.php">Home</a>
                     </li>
@@ -38,11 +38,11 @@ $result = mysqli_query($koneksi, $query);
                     <li class="nav-item">
                         <a class="nav-link" href="data_penjualan.php">Data Penjualan</a>
                     </li>
-                    <div class="logout-button ms-auto">
+                    <li class="logout-button nav-item ms-auto">
                         <a href="logout.php">
                             <button type="button" class="btn btn-dark logout">Logout</button>
                         </a>
-                    </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -62,7 +62,8 @@ $result = mysqli_query($koneksi, $query);
                     <th>Nama Produk</th>
                     <th>Harga</th>
                     <th>Stok</th>
-                    <th>Deskripsi</th>
+                    <th id="deskripsi">Deskripsi</th>
+                    <th>Aksi</th>
                 </tr>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
@@ -71,6 +72,12 @@ $result = mysqli_query($koneksi, $query);
                     <td><?php echo $row['harga']; ?></td>
                     <td><?php echo $row['stok']; ?></td>
                     <td><?php echo $row['deskripsi']; ?></td>
+                    <td>
+                        <div class="button-aksi d-flex gap-1">
+                            <a role="button" href="form_edit.php?id_produk=<?php echo $row['id_produk']; ?>" class="btn btn-secondary">Edit</a>
+                            <a role="button" href="proses_hapus.php?id_produk=<?php echo $row['id_produk']; ?>" class="btn btn-secondary">Hapus</a>
+                        </div>
+                    </td>
                 </tr>
                 <?php } ?>
             </table>
