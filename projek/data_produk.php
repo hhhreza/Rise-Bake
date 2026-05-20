@@ -55,7 +55,7 @@ $result = mysqli_query($koneksi, $query);
         <div class="parent-button-add">
             <a role="button" href="form_tambah.php" class="btn btn-secondary btn-explore mb-1">Tambah Produk</a>
         </div>
-        <div class="parent-table-product">
+        <div class="parent-table-product mb-5">
             <table class="list-dataproduk">
                 <tr>
                     <th>Kode Bakery</th>
