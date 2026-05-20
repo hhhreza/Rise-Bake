@@ -14,12 +14,18 @@
     font-family: Poppins Bold;
     src: url(Font/Poppins-Bold.ttf);
 }
+:root {
+    --primary-color: #432818;
+    --button-color: #bb9457;
+    --tabel-color: #b8a381;
+}
 html {
     overflow-x: hidden;
 }
 .btn{
-    background-color: #91091E;
+    background-color: var(--button-color);
     color: white;
+    font-family: Poppins;
 }
 .navbar-brand {
     font-family: Anerome;
@@ -28,7 +34,7 @@ html {
 }
 .navbar {
     font-size: 18px;
-    background-color: #91091E !important;
+    background-color: var(--primary-color) !important;
 }
 .nav-link {
     font-family: Poppins;
@@ -39,9 +45,9 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #cf964b, #a1743a);
+    background: linear-gradient(135deg, #977963, #886246);
 }
-.content-log-reg, .content-admin, .content-dataproduk {
+.content-log-reg, .content-admin, .content-dataproduk, .content-tambah-produk, .content-edit-produk {
     flex: 1;
 }
 .content-1 {
@@ -75,7 +81,7 @@ body {
     margin-top: 0;
     width: auto;
     height: fit-content;
-    background: linear-gradient(135deg, #d39543, #a1743a);
+    background: linear-gradient(135deg, #977963, #886246);
     display: flex;
     flex-direction: column;
 }
@@ -159,6 +165,9 @@ body {
     font-family: Poppins Bold;
     background-color: #91091E !important; 
 }
+.card-deskripsi {
+    text-align: justify;
+}
 /* .parent-card {
     display: flex;
     width: fit-content;
@@ -185,7 +194,7 @@ body {
 }
 .title-dataproduk {
     margin-top: 48px;
-    font-family: Poppins;
+    font-family: Poppins Bold;
     color: white;
 }
 .parent-table-product {
@@ -197,11 +206,11 @@ body {
     height: fit-content;
 }
 .list-dataproduk {
-    width: 70vw;
-    background-color: #91091E;
+    width: 85vw;
+    background-color: var(--tabel-color);
     color: #fff2e2;
     font-family: Poppins;
-    border-radius: 14px;
+    border-radius: 8px;
 }
 .content-dataproduk {
     display: flex;
@@ -211,13 +220,29 @@ body {
 .parent-button-add {
     margin-top: 16px;
     display: flex;
-    width: 70vw;
+    width: 85vw;
     justify-content: end;
 }
 td, th {
     padding: 14px;
 }
-.parent-form-tambah {
+th#deskripsi {
+    width: 530px;
+}
+th:first-child {
+    border-top-left-radius: 8px;
+}
+th:last-child {
+    border-top-right-radius: 8px;
+}
+th {
+    background-color: var(--primary-color);
+}
+td {
+    text-align: justify;
+    color: var(--primary-color);
+}
+.parent-form-tambah, .parent-form-edit {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -225,12 +250,18 @@ td, th {
     width: 100vw;
     height: fit-content;
 }
-.form-tambah {
+.content-tambah-produk, .content-edit-produk {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.form-tambah, .form-edit {
     width: 70vw;
     font-family: Poppins;
     border-radius: 8px;
-    padding: 16px;
-
+    padding: 24px;
+    background-color: var(--tabel-color);
+    color: var(--primary-color);
 }
 .wrap-footer {
     text-align: center;
@@ -238,7 +269,7 @@ td, th {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    background-color: #91091E !important;
+    background-color: var(--primary-color) !important;
 }
 .footer{
     color: white;
