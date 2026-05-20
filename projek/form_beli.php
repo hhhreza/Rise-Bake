@@ -5,6 +5,72 @@ if ($_SESSION['login'] != true) {
     header('Location: login.php');
     exit;
 }
+include 'koneksi.php';
+
+date_default_timezone_set('Asia/Jakarta'); //buat waktu
+
+$query_produk = "SELECT * FROM list_produk";
+$result_produk = mysqli_query($koneksi, $query_produk);
+
+// Menangkap kode_bakery dari URL (jika user klik Beli dari list_produk.php)
+$kodeDipilih = isset($_GET['kode_bakery']) ? $_GET['kode_bakery'] : '';
+
+if (isset($_POST['submit'])) { 
+    $nama_pembeli      = $_POST['nama_pembeli'];
+    $alamat            = $_POST['alamat'];
+    $no_hp             = $_POST['no_hp'];
+    $jumlah_beli       = $_POST['jumlah_beli'];
+    $metode_pembayaran = $_POST['metode_pembayaran'];
+    $kode_bakery       = $_POST['kode_bakery'];
+
+    // PERBAIKAN: Tambahkan nama_produk di kueri SELECT ini!
+    $query_detail = "SELECT id_produk, harga, nama_produk FROM list_produk WHERE kode_bakery = '$kode_bakery'";
+    $result_detail = mysqli_query($koneksi, $query_detail);
+    
+    if ($row_detail = mysqli_fetch_assoc($result_detail)) {
+        $id_produk   = $row_detail['id_produk'];
+        $harga       = $row_detail['harga'];
+        $nama_produk = $row_detail['nama_produk'];
+        $harga_total = $harga * $jumlah_beli;
+
+        $query_pembeli = "INSERT INTO data_pembeli (id_pembeli, nama_pembeli, alamat, no_hp, jumlah_beli, metode_pembayaran) 
+                          VALUES (NULL, '$nama_pembeli', '$alamat', '$no_hp', '$jumlah_beli', '$metode_pembayaran')";
+                  
+        $insert_pembeli = mysqli_query($koneksi, $query_pembeli);
+        
+        if ($insert_pembeli) {
+            $id_pembeli_baru = mysqli_insert_id($koneksi);
+
+            $query_penjualan = "INSERT INTO data_penjualan (id_penjualan, id_produk, id_pembeli, harga, jumlah_beli, harga_total) 
+                                VALUES (NULL, '$id_produk', '$id_pembeli_baru', '$harga', '$jumlah_beli', '$harga_total')";
+            
+            $insert_penjualan = mysqli_query($koneksi, $query_penjualan);
+
+            if ($insert_penjualan) {
+                // Kurangi stok
+                $query_update_stok = "UPDATE list_produk SET stok = stok - $jumlah_beli WHERE id_produk = '$id_produk'";
+                mysqli_query($koneksi, $query_update_stok);
+
+                // Set session untuk dikirim ke terimakasih.php
+                $_SESSION['pesanan'] = [
+                    'id'          => $id_pembeli_baru,
+                    'nama'        => $nama_pembeli,
+                    'produk'      => $nama_produk, 
+                    'jumlah'      => $jumlah_beli,
+                    'metode'      => $metode_pembayaran,
+                    'tanggal'     => date('d-m-Y H:i:s')
+                ];
+
+                header('Location: terimakasih.php');
+                exit;
+            } else {
+                echo "<script>alert('Gagal menyimpan data penjualan: " . mysqli_error($koneksi) . "');</script>";
+            }
+        } else {
+            echo "<script>alert('Error: Produk tidak ditemukan di database.');</script>";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -66,39 +132,61 @@ if ($_SESSION['login'] != true) {
                         <h4 class="mb-0">Form Pemesanan</h4>
                     </div>
                     <div class="card-body">
-                        <form action="terimakasih.html" method="get">
+                        <form action="" method="post">
 
                             <div class="mb-3">
                                 <label class="form-label">Nama Pembeli</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="nama_pembeli" required>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Alamat Lengkap</label>
-                                <textarea class="form-control" rows="3" required></textarea>
+                                <textarea class="form-control" rows="3" name="alamat" required></textarea>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label">Nomor HP</label>
-                                <input type="text" class="form-control" required>
+                                <input type="text" class="form-control" name="no_hp" required>
                             </div>
 
-                            <div class="mb-3">
-                                <label class="form-label">Jumlah Pesanan</label>
-                                <input type="number" class="form-control" min="1" value="1" required>
+                            <div class="row mb-3">
+                                <div class="col-md-8">
+                                    <label class="form-label fw-semibold">Produk</label>
+                                    <select name="kode_bakery" class="form-select" required>
+                                        <option value="" disabled <?= $kodeDipilih === '' ? 'selected' : '' ?>>– Pilih produk –</option>
+                                        
+                                        <?php while ($produk = mysqli_fetch_assoc($result_produk)): ?>
+                                            <option 
+                                                value="<?= htmlspecialchars($produk['kode_bakery']) ?>" 
+                                                <?= $kodeDipilih === $produk['kode_bakery'] ? 'selected' : '' ?>
+                                            >
+                                                <?= htmlspecialchars($produk['nama_produk']) ?> &ndash; Rp <?= number_format($produk['harga'], 0, ',', '.') ?> (Stok: <?= htmlspecialchars($produk['stok']) ?>)
+                                            </option>
+                                        <?php endwhile; ?>
+                                        
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Jumlah</label>
+                                    <input type="number" name="jumlah_beli" class="form-control" min="1" max="99" value="1" required>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                               <label class="form-label">Metode Pembayaran</label><br>
-                                <input type="radio" id="cod" name="metode" value="cod">
-                                <label for="cod">Cash On Delivery</label><br>
-                                <input type="radio" id="tf" name="metode" value="tf">
-                                <label for="tf">Transfer Bank</label><br>
-                                <input type="radio" id="qris" name="metode" value="qris">
-                                <label for="qris">QRIS</label>
+                            <div class="mb-3 text-center">
+                                    <label class="form-label fw-semibold d-block">Metode Pembayaran</label>
+                                <div class="gap-2 flex-wrap text-start d-flex justify-content-center">
+                                    <input type="radio" class="btn-check" id="cod" name="metode_pembayaran" value="cod" required>
+                                    <label class="btn btn-outline-dark" for="cod"> Cash On Delivery</label>
+
+                                    <input type="radio" class="btn-check" id="tf" name="metode_pembayaran" value="tf">
+                                    <label class="btn btn-outline-dark" for="tf"> Transfer Bank</label>
+
+                                    <input type="radio" class="btn-check" id="qris" name="metode_pembayaran" value="qris">
+                                    <label class="btn btn-outline-dark" for="qris"> QRIS</label>
+                                </div>
                             </div>
                             
-                            <button type="submit" class="btn btn-success w-100">Submit Pesanan</button>
+                            <button type="submit" class="btn btn-dark w-100" name="submit">Submit Pesanan</button>
                         </form>
                     </div>
                 </div>
@@ -106,9 +194,10 @@ if ($_SESSION['login'] != true) {
         </div>
     </main>
 
-    <footer class="bg-dark text-white text-center py-3 mt-4">
-        <div class="container">
-            <p class="mb-0">&copy; 2026 RezTech. All Rights Reserved.</p>
+   <footer class="footer">
+        <div class="wrap-footer">
+                <p class="copyright">&copy; 2026 Rise & Bake. All rights reserved.</p>
+                <p class="address">📍 Babarsari josjis | 📧 hello@rizebakery.com</p>
         </div>
     </footer>
 
