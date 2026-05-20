@@ -5,5 +5,5 @@ session_start();
 session_destroy();
 
 // Mengalihkan halaman kembali ke login
-header("Location: login.php?pesan=logout");
+header("Location: index.php?pesan=logout");
 ?>

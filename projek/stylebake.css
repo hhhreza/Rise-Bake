@@ -21,12 +21,6 @@ html {
     background-color: #91091E;
     color: white;
 }
-.content {
-    margin: 0 auto;
-    padding: 0;
-    width: 100%;
-    display: block;
-}
 .navbar-brand {
     font-family: Anerome;
     font-size: 32px;
@@ -45,9 +39,9 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #d39543, #a1743a);
+    background: linear-gradient(135deg, #cf964b, #a1743a);
 }
-main {
+.content-log-reg, .content-admin, .content-dataproduk {
     flex: 1;
 }
 .content-1 {
@@ -145,6 +139,94 @@ main {
 .btn-explore {
     margin-bottom: 16px;
     font-family: Poppins;
+}
+.base-produk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 64px 48px;
+    height: fit-content;
+    flex-direction: column;
+}
+.title-product-page {
+    width: fit-content;
+    font-family: Anerome;
+    font-size: 48px;
+    color: white;
+    text-align: center;
+}
+/* .parent-card {
+    display: flex;
+    width: fit-content;
+    gap: 24px;
+}
+.card-product {
+    flex: 1;
+}
+.wrapper-produk {
+    display: grid;
+    width: 80vw;
+    row-gap: 24px;
+} */
+.card-img-top {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 360px;
+}
+.parent-dashboard {
+    font-family: Poppins;
+    color: white;
+    margin-top: 48px;
+}
+.title-dataproduk {
+    margin-top: 48px;
+    font-family: Poppins;
+    color: white;
+}
+.parent-table-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: fit-content;
+}
+.list-dataproduk {
+    width: 70vw;
+    background-color: #91091E;
+    color: #fff2e2;
+    font-family: Poppins;
+    border-radius: 14px;
+}
+.content-dataproduk {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.parent-button-add {
+    margin-top: 16px;
+    display: flex;
+    width: 70vw;
+    justify-content: end;
+}
+td, th {
+    padding: 14px;
+}
+.parent-form-tambah {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: fit-content;
+}
+.form-tambah {
+    width: 70vw;
+    font-family: Poppins;
+    border-radius: 8px;
+    padding: 16px;
+
 }
 .wrap-footer {
     text-align: center;

@@ -1,12 +1,6 @@
-<?php 
+<?php
 session_start();
-include 'koneksi.php';
 
-// CEK APAKAH USER SUDAH LOGIN
-if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
-    header("Location: login.php?pesan=belumlogin");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +14,7 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand ms-4" href="index.php">🥐 Rise & Bake</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,29 +23,36 @@ if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto me-4 gap-1">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="produk.php">Products</a>
+                            <a class="nav-link" href="list_produk.php">Products</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="login.php">Login</a>
-                        </li>
+                        <?php
+                        if (!isset($_SESSION['email'])) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+                            </li>
+                        <?php }
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link" href="about_us.php">About Us</a>
                         </li>
-                        <div class="logout-button ms-auto">
-                            <a href="logout.php">
-                                <button type="button" class="btn btn-dark logout">Logout</button>
-                            </a>
-                        </div>
+                        <?php
+                        if (isset($_SESSION['email'])) { ?>
+                            <div class="logout-button ms-auto">
+                                <a href="logout.php">
+                                    <button type="button" class="btn btn-dark logout">Logout</button>
+                                </a>
+                            </div>
+                        <?php }
+                        ?>
                     </ul>
                 </div>
             </div>
         </nav>
-
     </header>
-    <main class="container-fluid content">
+    <main>
         <section class="content-1">
             <div class="wrap-headline">
                 <h1 class="headline">Rise & Bake</h1>
