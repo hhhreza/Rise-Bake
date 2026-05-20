@@ -19,7 +19,7 @@ if (isset($_POST['login'])) {
             $_SESSION['email'] = $email;
             $_SESSION['role'] = $user['role'];
             if ($user['role'] == 'admin') {
-                header("Location: dashboard.php");
+                header("Location: dashboardAdmin.php");
             } else {
                 header("Location: list_produk.php"); 
             }
