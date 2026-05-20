@@ -155,6 +155,10 @@ body {
     color: white;
     text-align: center;
 }
+.card-header {
+    font-family: Poppins Bold;
+    background-color: #91091E !important; 
+}
 /* .parent-card {
     display: flex;
     width: fit-content;
