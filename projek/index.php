@@ -90,7 +90,7 @@ session_start();
                 </div>
                 <div class="wrap-cta">
                     <h1 class="cta">Explore Our Menu</h1>
-                    <a role="button" href="produk.php" class="btn btn-success btn-explore">Product</a>
+                    <a role="button" href="list_produk.php" class="btn btn-success btn-explore">Product</a>
                 </div>
             </div>         
         </section>
