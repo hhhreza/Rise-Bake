@@ -40,11 +40,11 @@ session_start();
                         </li>
                         <?php
                         if (isset($_SESSION['email'])) { ?>
-                            <div class="logout-button ms-auto">
+                            <li class="logout-button nav-item ms-auto">
                                 <a href="logout.php">
                                     <button type="button" class="btn btn-dark logout">Logout</button>
                                 </a>
-                            </div>
+                            </li>
                         <?php }
                         ?>
                     </ul>
@@ -62,7 +62,7 @@ session_start();
         <section class="content-2">
             <div class="wrap-advantage-image">
                 <div class="wrap-advantage">
-                    <h1 class="advantage-call">Your Perfect Bite <br> Starts Here</h1>
+                    <h1 class="advantage-call">Your Perfect Bite <br> Starts Here!</h1>
                     <div class="advantage-list">
                         <div class="adv-items">
                             <h4>Freshly Baked</h4>
@@ -90,7 +90,7 @@ session_start();
                 </div>
                 <div class="wrap-cta">
                     <h1 class="cta">Explore Our Menu</h1>
-                    <a role="button" href="list_produk.php" class="btn btn-success btn-explore">Product</a>
+                    <a role="button" href="list_produk.php" class="btn btn-secondary btn-explore">Product</a>
                 </div>
             </div>         
         </section>
