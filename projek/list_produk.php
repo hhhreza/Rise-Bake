@@ -67,6 +67,7 @@ $result = mysqli_query($koneksi, $query);
                             <h5 class="card-title"><?php echo $row['nama_produk']; ?></h5>
                             <p class="card-text"><?php echo $row['deskripsi']; ?></p>
                             <p class="card-text"><small class="text-body-secondary">Price: <?php echo $row['harga']; ?></small></p>
+                            <a href="form_beli.php?kode_bakery=<?php echo $row['kode_bakery']; ?>" class="btn btn-success">Beli</a>
                         </div>
                     </div>
                 </div>
