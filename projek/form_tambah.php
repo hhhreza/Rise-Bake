@@ -43,29 +43,29 @@ if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
                 } ?>
                 <div class="mb-3">
                     <label for="kodebakery" class="form-label">Kode Bakery</label>
-                    <input type="text" class="form-control" id="kodebakery" name="kode_bakery" value="BKR000">
+                    <input type="text" class="form-control" id="kodebakery" name="kode_bakery" value="BKR000" required>
                 </div>
                 <div class="mb-3">
                     <label for="namaproduk" class="form-label">Nama Produk</label>
-                    <input type="text" class="form-control" id="namaproduk" name="nama_produk">
+                    <input type="text" class="form-control" id="namaproduk" name="nama_produk" required>
                 </div>
                 <div class="harga-stok gap-2 d-flex">
                     <div class="mb-3 w-100">
                         <label for="harga" class="form-label">Harga</label>
-                        <input type="text" class="form-control" id="harga" name="harga">
+                        <input type="text" class="form-control" id="harga" name="harga" required>
                     </div>
                     <div class="mb-3 w-100 ms-auto">
                         <label for="stok" class="form-label">Stok</label>
-                        <input type="number" class="form-control" id="stok" name="stok">
+                        <input type="number" class="form-control" id="stok" name="stok" required>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="deskripsi" class="form-label">Deskripsi</label>
-                    <input type="textarea" class="form-control" id="deskripsi" name="deskripsi">
+                    <input type="textarea" class="form-control" id="deskripsi" name="deskripsi" required>
                 </div>
                 <div class="mb-3">
                     <label for="gambar" class="form-label">Tambahkan gambar</label>
-                    <input type="file" class="form-control" id="gambar" name="gambar">
+                    <input type="file" class="form-control" id="gambar" name="gambar" required>
                 </div>
                 <button type="submit" class="btn btn-secondary w-100" name="submit">Save Changes</button>
             </form>
