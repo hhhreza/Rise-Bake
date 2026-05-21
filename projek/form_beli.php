@@ -12,7 +12,7 @@ date_default_timezone_set('Asia/Jakarta'); //buat waktu
 $query_produk = "SELECT * FROM list_produk";
 $result_produk = mysqli_query($koneksi, $query_produk);
 
-// Menangkap kode_bakery dari URL (jika user klik Beli dari list_produk.php)
+// Menangkap kode_bakery dari URL 
 $kodeDipilih = isset($_GET['kode_bakery']) ? $_GET['kode_bakery'] : '';
 
 if (isset($_POST['submit'])) { 
@@ -23,7 +23,6 @@ if (isset($_POST['submit'])) {
     $metode_pembayaran = $_POST['metode_pembayaran'];
     $kode_bakery       = $_POST['kode_bakery'];
 
-    // PERBAIKAN: Tambahkan nama_produk di kueri SELECT ini!
     $query_detail = "SELECT id_produk, harga, nama_produk FROM list_produk WHERE kode_bakery = '$kode_bakery'";
     $result_detail = mysqli_query($koneksi, $query_detail);
     

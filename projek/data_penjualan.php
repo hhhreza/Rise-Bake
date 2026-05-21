@@ -1,5 +1,5 @@
 <?php
-session_start(); // Jangan lupa session_start() kalau pakai $_SESSION
+session_start();
 include 'koneksi.php';
 
 if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
@@ -7,8 +7,8 @@ if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
     exit();
 }   
 
-// JOIN data_penjualan, data_pembeli, dan list_produk
-$query = "SELECT pj.id_penjualan, pb.nama_pembeli, p.nama_produk, pj.harga, pj.jumlah_beli, pj.harga_total FROM data_penjualan pj JOIN data_pembeli pb ON pj.id_pembeli = pb.id_pembeli JOIN list_produk p ON pj.id_produk = p.id_produk ORDER BY pj.id_penjualan ASC"; // Urutkan dari transaksi terbaru
+
+$query = "SELECT pj.id_penjualan, pb.nama_pembeli, p.nama_produk, pj.harga, pj.jumlah_beli, pj.harga_total FROM data_penjualan pj JOIN data_pembeli pb ON pj.id_pembeli = pb.id_pembeli JOIN list_produk p ON pj.id_produk = p.id_produk ORDER BY pj.id_penjualan ASC"; 
 
 $result = mysqli_query($koneksi, $query);   
 
