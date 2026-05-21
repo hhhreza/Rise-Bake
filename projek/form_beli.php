@@ -196,8 +196,8 @@ if (isset($_POST['submit'])) {
 
    <footer class="footer">
         <div class="wrap-footer">
-                <p class="copyright">&copy; 2026 Rise & Bake. All rights reserved.</p>
-                <p class="address">📍 Babarsari josjis | 📧 hello@rizebakery.com</p>
+            <p class="copyright">&copy; 2026 Rise & Bake. All rights reserved.</p>
+            <p class="address">📍 Babarsari josjis | 📧 hello@rizebakery.com</p>
         </div>
     </footer>
 
