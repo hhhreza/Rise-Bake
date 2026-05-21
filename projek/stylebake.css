@@ -47,7 +47,7 @@ body {
     overflow-x: hidden;
     background: linear-gradient(135deg, #977963, #886246);
 }
-.content-log-reg, .content-admin, .content-dataproduk, .content-tambah-produk, .content-edit-produk {
+.content-log-reg, .content-admin, .content-dataproduk, .content-tambah-produk, .content-edit-produk, .content-about-us {
     flex: 1;
 }
 .content-1 {
@@ -254,6 +254,32 @@ td {
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+.content-about-us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title-about-us {
+    font-family: Poppins Bold;
+    color: white;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+.parent-about-us {
+    display: flex;
+    gap: 18px;
+    width: fit-content;
+    overflow: hidden;
+}
+.card-profile {
+    overflow: hidden;
+}
+.img-about-us {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
 }
 .form-tambah, .form-edit {
     width: 70vw;
