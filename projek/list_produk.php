@@ -26,26 +26,30 @@ $result = mysqli_query($koneksi, $query);
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto me-4 gap-1">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Home</a>
+                            <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="list_produk.php">Products</a>
+                            <a class="nav-link" href="list_produk.php">Products</a>
                         </li>
                         <?php
                         if (!isset($_SESSION['email'])) { ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.php">Login</a>
+                                <a class="nav-link active" aria-current="page" href="login.php">Login</a>
                             </li>
                         <?php }
                         ?>
                         <li class="nav-item">
                             <a class="nav-link" href="about_us.php">About Us</a>
                         </li>
-                        <div class="logout-button ms-auto">
-                            <a href="logout.php">
-                                <button type="button" class="btn btn-dark logout">Logout</button>
-                            </a>
-                        </div>
+                        <?php
+                        if (isset($_SESSION['email'])) { ?>
+                            <li class="logout-button nav-item ms-auto">
+                                <a href="logout.php">
+                                    <button type="button" class="btn btn-dark logout">Logout</button>
+                                </a>
+                            </li>
+                        <?php }
+                        ?>
                     </ul>
                 </div>
             </div>
