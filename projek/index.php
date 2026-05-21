@@ -31,7 +31,7 @@ session_start();
                         <?php
                         if (!isset($_SESSION['email'])) { ?>
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="login.php">Login</a>
+                                <a class="nav-link" href="login.php">Login</a>
                             </li>
                         <?php }
                         ?>
