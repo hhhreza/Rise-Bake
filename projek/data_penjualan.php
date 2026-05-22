@@ -55,27 +55,47 @@ $result = mysqli_query($koneksi, $query);
         <div class="text-center title-dataproduk mb-5">
             <h1>Data Penjualan</h1>
         </div>
-        <div class="parent-table-product mb-5 container">
-            <table class="list-dataproduk">
-                <tr>
-                    <th>ID Penjualan</th>
-                    <th>Nama Pembeli</th>
-                    <th>Nama Produk</th>
-                    <th>Harga Satuan</th>
-                    <th>Jumlah Beli</th>
-                    <th>Total Harga</th>
-                </tr>
-                <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                 <tr>
-                    <td><?php echo $row['id_penjualan']; ?></td>
-                    <td><?php echo $row['nama_pembeli']; ?></td>
-                    <td><?php echo $row['nama_produk']; ?></td>
-                    <td>Rp <?php echo $row['harga']; ?></td>
-                    <td><?php echo $row['jumlah_beli']; ?></td>
-                    <td>Rp <?php echo $row['harga_total']; ?></td>
-                </tr>
-                <?php } ?>
-            </table>
+        <div class="card border-0 shadow-sm overflow-hidden mb-4 mx-4 w-75" style="border-radius: 12px;">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0" style="background-color: #fff;">
+                    
+                    <thead style="background-color: #4a3525; color: #ffffff;">
+                        <tr>
+                            <th scope="col" class="ps-4 py-3" style="width: 13%;">ID Pembeli</th>
+                            <th scope="col" class="py-3" style="width: 18%;">Nama Pembeli</th>
+                            <th scope="col" class="py-3" style="width: 13%;">Nama Produk</th>
+                            <th scope="col" class="py-3" style="width: 17%;">Harga Satuan</th>
+                            <th scope="col" class="py-3" style="width: 19%;">Jumlah Beli</th>
+                            <th scope="col" class="pe-4 py-3" style="width: 20%;">Total Harga</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody class="table-group-divider" style="border-color: #e0d7cf;">
+                        
+                        <?php
+                        // Logika looping php kamu tetap berjalan di sini
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+                        <tr>
+                            <td class="ps-4 fw-bold text-secondary"><?php echo $row['id_penjualan']; ?></td>
+                            <td class="fw-semibold text-dark"><?php echo $row['nama_pembeli']; ?></td>
+                            <td class="fw-semibold text-dark"><?php echo $row['nama_produk']; ?></td>
+                            <td>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 rounded">
+                                    <?php echo $row['harga']; ?>
+                                </span>
+                            </td>
+                            <td class="fw-semibold text-dark"><?php echo $row['jumlah_beli']; ?></td>
+                            <td>
+                                <span class="badge bg-success-subtle text-success px-2 py-1 rounded">
+                                    <?php echo $row['harga_total']; ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
     <footer class="footer">
