@@ -52,41 +52,89 @@ session_start();
             </div>
         </nav>
     </header>
-    <main class="content-about-us">
-        <div class="title-about-us text-center">
-            <h1>About Us</h1>
-        </div>
-        <div class="parent-about-us">
-            <div class="card card-profile mb-3" style="width: 540px; height: 240px">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="Gambar/Reza.jpeg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Dwiky Reza Kurniawan</h5>
-                            <p class="card-text">Information Systems - 25 <br> UPN "Veteran" Yogyakarta</p>
-                            <p class="card-text"><small class="text-body-secondary">124250002</small></p>
-                        </div>
-                    </div>
-                </div>
+    <main class="content-about-us py-5" style="background-color: #886246; color: #f9f1eb;">
+    
+    <section class="container my-5">
+        <div class="row align-items-center g-5">
+            <div class="col-md-5">
+                <h6 class="text-uppercase text-warning fw-bold mb-2" style="letter-spacing: 2px;">Since 2026</h6>
+                <h1 class="display-4 fw-bold mb-4" style="font-family: Anerome;">Freshly Baked, Every Single Day.</h1>
             </div>
-            <div class="card card-profile mb-3" style="width: 540px; height: 240px">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="Gambar/Mazaya.jpg" class="img-fluid img-about-us rounded-start" alt="mazaya">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Mazaya Hannindra Firasyan</h5>
-                            <p class="card-text">Information Systems - 25 <br> UPN "Veteran" Yogyakarta</p>
-                            <p class="card-text"><small class="text-body-secondary">124250013</small></p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-7">
+                <p class="lead fw-medium text-white mb-3">
+                    Your perfect bite starts here! Berawal dari kecintaan kami terhadap aroma panggangan yang menenangkan di pagi hari, Rise & Bake hadir untuk menemani setiap awal harimu.
+                </p>
+                <p class="text-white" style="line-height: 1.8; font-family: Poppins;">
+                    Kami mengusung komitmen untuk menyajikan sourdough, croissant, hingga bagel otentik yang diproduksi langsung dari oven kami setiap subuh. Dari dapur kami di Babarsari, Yogyakarta, kami mendedikasikan diri untuk meramu adonan terbaik, memanggangnya dengan presisi, dan menyajikannya hangat-hangat demi senyum pertama di pagi harimu.
+                </p>
             </div>
         </div>
-    </main>
+    </section>
+
+    <hr class="container my-5 opacity-25" style="color: #f9f1eb;">
+
+    <section class="container my-5 text-center">
+        <h2 class="fw-bold mb-2" style="font-family: Anerome;">Behind The Oven</h2>
+        <p class="mb-5" style="font-family: Poppins;">Kenali tim mahasiswa Sistem Informasi di balik kelezatan Rise & Bake</p>
+        
+        <div class="row justify-content-center g-4">
+            
+            <div class="col-12 col-md-4">
+                <div class="card border-0 bg-transparent team-card">
+                    <div class="position-relative mx-auto overflow-hidden rounded-circle mb-4 shadow" style="width: 200px; height: 200px;">
+                        <img src="gambar/Reza.jpeg" class="w-100 h-100 object-fit-cover" alt="Dwiky Reza Kurniawan" style="object-position: top center;">
+                    </div>
+                    <h5 class="fw-bold mb-1 text-white" style="font-family: Poppins;">Dwiky Reza Kurniawan</h5>
+                    <p class="text-warning small fw-semibold mb-2" style="font-family: Poppins;">Co-Founder & Head Baker</p>
+                    <p class="small text-white" style="font-family: Poppins;">Information Systems '25<br>UPN "Veteran" Yogyakarta</p>
+                    <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill mt-2 small">124250002</span>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card border-0 bg-transparent team-card">
+                    <div class="position-relative mx-auto overflow-hidden rounded-circle mb-4 shadow" style="width: 200px; height: 200px;">
+                        <img src="gambar/Mazaya.jpg" class="w-100 h-100 object-fit-cover" alt="Mazaya Hannindra Firasyan" style="object-position: top center;">
+                    </div>
+                    <h5 class="fw-bold mb-1 text-white" style="font-family: Poppins;">Mazaya Hannindra Firasyan</h5>
+                    <p class="text-warning small fw-semibold mb-2" style="font-family: Poppins;">Co-Founder & System Analyst</p>
+                    <p class="small text-white" style="font-family: Poppins;">Information Systems '25<br>UPN "Veteran" Yogyakarta</p>
+                    <span class="badge bg-light text-secondary border px-3 py-2 rounded-pill mt-2 small">124250013</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="container my-5 opacity-25" style="color: #f9f1eb;">
+
+    <section class="container my-5 text-center">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="p-3">
+                    <div class="fs-1 mb-2">🌾</div>
+                    <h5 class="fw-bold">Bahan Premium</h5>
+                    <p class="text-white small">Kami hanya menggunakan tepung organik dan mentega pilihan tanpa bahan pengawet buatan.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3">
+                    <div class="fs-1 mb-2">🔥</div>
+                    <h5 class="fw-bold">Dipanggang Segar</h5>
+                    <p class="text-white small">Setiap produk dipanggang beberapa jam sebelum sampai ke tangan Anda demi menjaga kerenyahan.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3">
+                    <div class="fs-1 mb-2">❤️</div>
+                    <h5 class="fw-bold">Dibuat Tulus</h5>
+                    <p class="text-white small">Setiap adonan diramu menggunakan tangan terampil dengan penuh rasa cinta dan higienitas tinggi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
     <footer class="footer">
         <div class="wrap-footer">
             <p class="copyright">&copy; 2026 Rise & Bake. All rights reserved.</p>
