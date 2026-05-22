@@ -207,7 +207,7 @@ body {
 }
 .list-dataproduk {
     width: 85vw;
-    background-color: var(--tabel-color);
+    background-color: var(--tabel-color) !important;
     color: #fff2e2;
     font-family: Poppins;
     border-radius: 8px;
@@ -235,6 +235,7 @@ th:first-child {
 th:last-child {
     border-top-right-radius: 8px;
 }
+
 th {
     background-color: var(--primary-color);
 }
@@ -263,8 +264,7 @@ td {
 .title-about-us {
     font-family: Poppins Bold;
     color: white;
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin: 48px 56px;
 }
 .parent-about-us {
     display: flex;
@@ -288,6 +288,23 @@ td {
     padding: 24px;
     background-color: var(--tabel-color);
     color: var(--primary-color);
+}
+.table th, .table td {
+    border-top: none;
+    border-bottom: 1px solid #f1ece7;
+}
+.table tbody tr {
+    transition: background-color 0.2s ease-in-out;
+}
+.table tbody tr:hover {
+    background-color: #fcfaf8 !important;
+}
+.table td p::-webkit-scrollbar {
+    width: 4px;
+}
+.table td p::-webkit-scrollbar-thumb {
+    background: #d1c7bd;
+    border-radius: 4px;
 }
 .wrap-footer {
     text-align: center;
