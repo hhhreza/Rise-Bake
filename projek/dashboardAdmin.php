@@ -1,11 +1,19 @@
 <?php
 session_start();
-
+include 'koneksi.php';
 // Kalau belum login atau bukan admin, tendang keluar
 if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
     header("Location: index.php");
     exit();
 }
+
+$queryTotalProduk = "SELECT COUNT(*) AS total_produk FROM list_produk";
+$hasilTotalProduk = mysqli_query($koneksi, $queryTotalProduk);
+$rowTotalProduk = mysqli_fetch_assoc($hasilTotalProduk);
+
+$queryTotalPenjualan= "SELECT COUNT(*) AS total_transaksi FROM data_penjualan";
+$hasilTotalPenjualan = mysqli_query($koneksi, $queryTotalPenjualan);
+$rowTotalPenjualan = mysqli_fetch_assoc($hasilTotalPenjualan);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,12 +55,56 @@ if ($_SESSION['login'] != true || $_SESSION['role'] != 'admin') {
     </header>
     <main class="content-admin">
         <div class="text-center parent-dashboard">
-            <h1>Selamat datang di Dashboard Admin!</h1>
-            <h5>Silakan pilih menu berikut.</h5>
+            <h1>Selamat Datang di Dashboard Admin!</h1>
+            <h5>Let's track the market!</h5>
         </div>
-        <div class="d-flex justify-content-center gap-2 mt-3">
-            <a role="button" href="data_produk.php" class="btn btn-secondary btn-explore">Data Produk</a>
-            <a role="button" href="data_penjualan.php" class="btn btn-secondary btn-explore">Data Penjualan</a>
+        <div>
+            <div class="container mt-4">
+                <div class="row justify-content-center gap-3">
+                    <div class="col-md-4 card bg-white text-dark p-3 shadow-sm border-0 rounded">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Varian Produk</h6>
+                                <h3 class="fw-bold mb-0"><?php echo $rowTotalProduk['total_produk']; ?></h3>
+                            </div>
+                            <div class="bg-warning-subtle text-warning p-3 rounded-circle">
+                                🍞
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 card bg-white text-dark p-3 shadow-sm border-0 rounded">
+                        <div class="d-flex align-items-between justify-content-between">
+                            <div>
+                                <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Penjualan</h6>
+                                <h3 class="fw-bold mb-0"><?php echo $rowTotalPenjualan['total_transaksi']; ?></h3>
+                            </div>
+                            <div class="bg-success-subtle text-success p-3 rounded-circle">
+                                💰
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="container mt-1">
+                <div class="row justify-content-center gap-3">
+                    <div class="col-md-4 border-0 rounded">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div>
+                                 <a role="button" href="data_produk.php" class="btn btn-secondary btn-explore">Data Produk</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 border-0 rounded">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div>
+                                 <a role="button" href="data_penjualan.php" class="btn btn-secondary btn-explore">Data Penjualan</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="footer">
