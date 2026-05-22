@@ -14,6 +14,10 @@ $rowTotalProduk = mysqli_fetch_assoc($hasilTotalProduk);
 $queryTotalPenjualan= "SELECT COUNT(*) AS total_transaksi FROM data_penjualan";
 $hasilTotalPenjualan = mysqli_query($koneksi, $queryTotalPenjualan);
 $rowTotalPenjualan = mysqli_fetch_assoc($hasilTotalPenjualan);
+
+$queryTotalPendapatan= "SELECT SUM(harga_total) AS total_pendapatan FROM data_penjualan";
+$hasilTotalPendapatan = mysqli_query($koneksi, $queryTotalPendapatan);
+$rowTotalPendapatan = mysqli_fetch_assoc($hasilTotalPendapatan);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +79,7 @@ $rowTotalPenjualan = mysqli_fetch_assoc($hasilTotalPenjualan);
                     <div class="col-md-4 card bg-white text-dark p-3 shadow-sm border-0 rounded">
                         <div class="d-flex align-items-between justify-content-between">
                             <div>
-                                <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Penjualan</h6>
+                                <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Transaksi</h6>
                                 <h3 class="fw-bold mb-0"><?php echo $rowTotalPenjualan['total_transaksi']; ?></h3>
                             </div>
                             <div class="bg-success-subtle text-success p-3 rounded-circle">
@@ -83,23 +87,14 @@ $rowTotalPenjualan = mysqli_fetch_assoc($hasilTotalPenjualan);
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="container mt-1">
-                <div class="row justify-content-center gap-3">
-                    <div class="col-md-4 border-0 rounded">
-                        <div class="d-flex align-items-center justify-content-center">
+                    <div class="col-md-4 card bg-white text-dark p-3 shadow-sm border-0 rounded">
+                        <div class="d-flex align-items-between justify-content-between">
                             <div>
-                                 <a role="button" href="data_produk.php" class="btn btn-secondary btn-explore">Data Produk</a>
+                                <h6 class="text-muted mb-1 text-uppercase small fw-bold">Total Pendapatan</h6>
+                                <h3 class="fw-bold mb-0">Rp<?php echo $rowTotalPendapatan['total_pendapatan']; ?></h3>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 border-0 rounded">
-                        <div class="d-flex align-items-center justify-content-center">
-                            <div>
-                                 <a role="button" href="data_penjualan.php" class="btn btn-secondary btn-explore">Data Penjualan</a>
+                            <div class="bg-success-subtle text-success p-3 rounded-circle">
+                                💵
                             </div>
                         </div>
                     </div>
