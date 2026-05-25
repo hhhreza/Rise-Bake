@@ -82,6 +82,7 @@ if (isset($_POST['login'])) {
                     <button type="submit" class="btn w-100" name="login">Login</button>
 
                     <p class="card-text text-center mt-3">Belum memiliki akun? <a href="register.php">Daftar di sini</a></p>
+                    <p class="card-text text-center mt-1"><a href="index.php">Kembali ke Home</a></p>
                 </form>
             </div>
         </main>
