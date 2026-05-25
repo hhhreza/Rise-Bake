@@ -152,17 +152,12 @@ if (isset($_POST['submit'])) {
                                 <div class="col-md-8">
                                     <label class="form-label fw-semibold">Produk</label>
                                     <select name="kode_bakery" class="form-select" required>
-                                        <option value="" disabled <?= $kodeDipilih === '' ? 'selected' : '' ?>>– Pilih produk –</option>
-                                        
-                                        <?php while ($produk = mysqli_fetch_assoc($result_produk)): ?>
-                                            <option 
-                                                value="<?= htmlspecialchars($produk['kode_bakery']) ?>" 
-                                                <?= $kodeDipilih === $produk['kode_bakery'] ? 'selected' : '' ?>
-                                            >
-                                                <?= htmlspecialchars($produk['nama_produk']) ?> &ndash; Rp <?= number_format($produk['harga'], 0, ',', '.') ?> (Stok: <?= htmlspecialchars($produk['stok']) ?>)
+                                        <option value="">-- Pilih Produk Tersedia --</option>
+                                        <?php while ($produk = mysqli_fetch_assoc($result_produk)) { ?>
+                                            <option value="<?= $produk['kode_bakery'] ?>" <?= $kodeDipilih === $produk['kode_bakery'] ? 'selected' : '' ?>>
+                                                <?= $produk['nama_produk'] ?> - Rp <?= number_format($produk['harga'], 0, ',', '.') ?> (Stok: <?= $produk['stok'] ?>)
                                             </option>
-                                        <?php endwhile; ?>
-                                        
+                                        <?php } ?>
                                     </select>
                                 </div>
                                 <div class="col-md-4">
