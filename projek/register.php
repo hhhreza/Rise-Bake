@@ -72,6 +72,7 @@ if (isset($_POST['register'])) {
             <button type="submit" class="btn w-100" name="register">Register</button>
 
             <p class="card-text text-center mt-3">Sudah memiliki akun? <a href="login.php">Login di sini</a></p>
+            <p class="card-text text-center mt-1"><a href="index.php">Kembali ke Home</a></p>
         </form>
     </div>
 </main>
